@@ -25,10 +25,17 @@ Development elective.
 | ECG | AD8232 single-lead monitor | regular sinus rhythm |
 | Blood oxygen | Fingertip pulse oximeter | 95–100 % |
 
+## Design
+
+A dark control-room theme: deep indigo surfaces with violet, lime and mint signal
+colours, so the page reads as an instrument panel rather than a document. Type is
+**Syne** for headings, **Space Grotesk** for body text and **JetBrains Mono** for
+every numeric readout, loaded from Google Fonts.
+
 ## CSS techniques used
 
 Flexbox and CSS Grid layouts, styled cards / buttons / tables / forms / navigation,
-five hover effects with transitions, class, ID and descendant selectors, the
+nine hover rules with transitions, class, ID and descendant selectors, the
 `:hover`, `:focus`, `:active`, `:nth-child()` and `:last-child` pseudo-classes,
 a `max-width: 768px` media query for mobile, shorthand properties and comments.
 

@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Body temperature sensor">
-    <rect x="18" y="5" width="12" height="27" rx="6" fill="none" stroke="#0f7b6c" stroke-width="3"/>
-    <circle cx="24" cy="37" r="7" fill="#e4572e"/>
-    <path d="M24 33V14" stroke="#e4572e" stroke-width="4" stroke-linecap="round"/>
+    <rect x="18" y="5" width="12" height="27" rx="6" fill="none" stroke="#c0abff" stroke-width="3"/>
+    <circle cx="24" cy="37" r="7" fill="#ff6b81"/>
+    <path d="M24 33V14" stroke="#ff6b81" stroke-width="4" stroke-linecap="round"/>
 </svg>
