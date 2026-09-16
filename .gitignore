@@ -1,0 +1,9 @@
+# Assignment briefs and Word lock files stay local
+*.docx
+~$*
+
+# OS / editor junk
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/

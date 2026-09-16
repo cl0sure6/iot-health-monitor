@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Blood oxygen sensor">
+    <circle cx="24" cy="24" r="18" fill="none" stroke="#00838f" stroke-width="4"/>
+    <circle cx="24" cy="24" r="8" fill="#00838f"/>
+    <path d="M24 6a18 18 0 0 1 18 18" fill="none" stroke="#b2ebf2" stroke-width="4" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,603 @@
+/* ============================================================
+   MetaSense IoT — Seminar #3
+   Stylesheet for the metabolic syndrome monitoring dashboard
+   ============================================================ */
+
+/* ---------- Colour palette and shared values ---------- */
+:root {
+    --teal: #0f7b6c;
+    --teal-dark: #0a5a4f;
+    --ink: #1c2b33;
+    --muted: #5b6b75;
+    --line: #d8e1e6;
+    --page: #eef3f5;
+    --white: #ffffff;
+    --green: #1b7f3b;
+    --amber: #a86400;
+    --red: #b3261e;
+}
+
+/* ---------- Base ---------- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    /* shorthand: font, margin, padding */
+    font: 16px/1.6 "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--ink);
+    background-color: var(--page);
+}
+
+h1,
+h2,
+h3 {
+    margin: 0 0 12px;
+    line-height: 1.25;
+}
+
+h2 {
+    font-size: 1.6rem;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--teal);
+}
+
+a {
+    color: var(--teal-dark);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover,
+a:focus {
+    color: var(--red);
+    text-decoration: underline;
+}
+
+/* ---------- Header and navigation (Flexbox) ---------- */
+.site-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    /* shorthand: padding, background */
+    padding: 18px 32px;
+    background: linear-gradient(90deg, var(--teal) 0%, var(--teal-dark) 100%);
+    color: var(--white);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* descendant selector: the logo inside the brand block */
+.brand img {
+    background-color: var(--white);
+    border-radius: 50%;
+    padding: 4px;
+}
+
+.brand-text h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+.tagline {
+    margin: 2px 0 0;
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+/* descendant selectors inside the navigation */
+.main-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.main-nav a {
+    display: block;
+    padding: 8px 14px;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 0.95rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* hover effect 1 — navigation links */
+.main-nav a:hover,
+.main-nav a:focus {
+    background-color: var(--white);
+    color: var(--teal-dark);
+    text-decoration: none;
+}
+
+/* ---------- Sections ---------- */
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 20px;
+}
+
+section {
+    margin: 0 0 40px;
+    padding: 24px;
+    background-color: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(28, 43, 51, 0.08);
+}
+
+.section-note {
+    margin: 0 0 20px;
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+/* ID selector — the introduction block gets its own accent */
+#about {
+    border-left: 6px solid var(--teal);
+}
+
+.feature-list {
+    margin: 16px 0 0;
+    padding: 0 0 0 20px;
+}
+
+.feature-list li {
+    margin-bottom: 6px;
+}
+
+.feature-title {
+    font-weight: bold;
+    color: var(--teal-dark);
+}
+
+/* ---------- Dashboard tiles (CSS Grid) ---------- */
+.tile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 18px;
+}
+
+.tile {
+    padding: 18px;
+    background-color: #f7fafb;
+    border: 1px solid var(--line);
+    border-left: 5px solid var(--teal);
+    border-radius: 6px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* hover effect 2 — dashboard tiles lift slightly */
+.tile:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(15, 123, 108, 0.18);
+}
+
+.tile h3 {
+    font-size: 1rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.tile-value {
+    margin: 4px 0;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--teal-dark);
+}
+
+.tile-range {
+    margin: 0;
+    font-size: 0.82rem;
+    color: var(--muted);
+}
+
+.unit {
+    font-size: 0.95rem;
+    font-weight: normal;
+    color: var(--muted);
+}
+
+/* ---------- Sensor cards (CSS Grid + Flexbox inside) ---------- */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(28, 43, 51, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* hover effect 3 — sensor cards lift and change border */
+.card:hover {
+    transform: translateY(-6px);
+    border-color: var(--teal);
+    box-shadow: 0 10px 20px rgba(28, 43, 51, 0.16);
+}
+
+.card-icon {
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    font-size: 1.15rem;
+}
+
+.card-model {
+    margin: 0 0 10px;
+    font-size: 0.82rem;
+    color: var(--muted);
+}
+
+.card-value {
+    margin: 0 0 10px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--ink);
+}
+
+.card-time {
+    margin: 10px 0 14px;
+    font-size: 0.78rem;
+    color: var(--muted);
+}
+
+/* ---------- Status labels ---------- */
+.status {
+    display: inline-block;
+    margin: 0;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.82rem;
+    font-weight: bold;
+}
+
+.status-normal {
+    color: var(--green);
+    background-color: #e3f4e8;
+    border: 1px solid #9fd4b0;
+}
+
+.status-warning {
+    color: var(--amber);
+    background-color: #fdf2de;
+    border: 1px solid #efc97e;
+}
+
+.status-critical {
+    color: var(--red);
+    background-color: #fbe6e5;
+    border: 1px solid #edaaa6;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+    margin-top: auto;
+    padding: 9px 18px;
+    font: inherit;
+    font-size: 0.88rem;
+    color: var(--teal-dark);
+    background-color: var(--white);
+    border: 2px solid var(--teal);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* hover effect 4 — buttons invert their colours */
+.btn:hover,
+.btn:focus {
+    color: var(--white);
+    background-color: var(--teal);
+}
+
+.btn:active {
+    background-color: var(--teal-dark);
+    border-color: var(--teal-dark);
+}
+
+.btn-primary {
+    color: var(--white);
+    background-color: var(--teal);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--teal-dark);
+    border-color: var(--teal-dark);
+}
+
+/* ---------- Patient information (Flexbox, two columns) ---------- */
+.patient-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.patient-card,
+.patient-form {
+    flex: 1 1 320px;
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+}
+
+.patient-card {
+    background-color: #f7fafb;
+}
+
+.patient-id {
+    margin: 0 0 14px;
+    color: var(--muted);
+    font-size: 0.88rem;
+}
+
+/* ---------- Tables ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+}
+
+caption {
+    margin-bottom: 8px;
+    text-align: left;
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+th,
+td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+}
+
+.patient-table th {
+    width: 45%;
+    color: var(--muted);
+    font-weight: normal;
+}
+
+.log-table thead th {
+    color: var(--white);
+    background-color: var(--teal);
+    border-bottom: none;
+}
+
+/* pseudo-class — zebra striping on the log table */
+.log-table tbody tr:nth-child(even) {
+    background-color: #f4f8f9;
+}
+
+/* pseudo-class — highlight the row under the cursor */
+.log-table tbody tr:hover {
+    background-color: #e6f2f0;
+}
+
+.log-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ---------- Form ---------- */
+.patient-form {
+    background-color: var(--white);
+}
+
+.form-note {
+    margin: 0 0 16px;
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+.patient-form label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.88rem;
+    font-weight: bold;
+}
+
+.patient-form input,
+.patient-form select,
+.patient-form textarea {
+    width: 100%;
+    margin-bottom: 14px;
+    padding: 9px 10px;
+    font: inherit;
+    font-size: 0.92rem;
+    color: var(--ink);
+    background-color: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* pseudo-class — highlight the field being filled in */
+.patient-form input:focus,
+.patient-form select:focus,
+.patient-form textarea:focus {
+    outline: none;
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(15, 123, 108, 0.18);
+}
+
+.patient-form textarea {
+    resize: vertical;
+}
+
+/* ---------- Alerts ---------- */
+.alert-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.alert {
+    padding: 16px 18px;
+    border: 1px solid var(--line);
+    border-left: 6px solid var(--muted);
+    border-radius: 6px;
+    transition: box-shadow 0.3s ease;
+}
+
+.alert:hover {
+    box-shadow: 0 6px 14px rgba(28, 43, 51, 0.14);
+}
+
+.alert h3 {
+    font-size: 1.05rem;
+}
+
+.alert p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.alert-normal {
+    background-color: #f2faf5;
+    border-left-color: var(--green);
+}
+
+.alert-warning {
+    background-color: #fffaf0;
+    border-left-color: var(--amber);
+}
+
+.alert-critical {
+    background-color: #fff5f4;
+    border-left-color: var(--red);
+}
+
+.log-heading {
+    margin-top: 8px;
+    font-size: 1.15rem;
+}
+
+/* ---------- Footer (CSS Grid) ---------- */
+.site-footer {
+    padding: 32px 20px 16px;
+    color: #dfeaec;
+    background-color: var(--ink);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 28px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.footer-column h3 {
+    color: var(--white);
+    font-size: 1.05rem;
+}
+
+.footer-column p {
+    margin: 0 0 10px;
+    font-size: 0.88rem;
+}
+
+.contact-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.88rem;
+}
+
+.contact-list li {
+    margin-bottom: 6px;
+}
+
+/* descendant selector — links inside the footer */
+.site-footer a {
+    color: #8fd6c9;
+}
+
+.site-footer a:hover {
+    color: var(--white);
+}
+
+.copyright {
+    max-width: 1100px;
+    margin: 24px auto 0;
+    padding-top: 14px;
+    border-top: 1px solid #33454f;
+    font-size: 0.8rem;
+    text-align: center;
+    color: #9fb1ba;
+}
+
+/* ============================================================
+   Mobile devices — one column, stacked navigation
+   ============================================================ */
+@media screen and (max-width: 768px) {
+    .site-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px 18px;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        width: 100%;
+        gap: 2px;
+    }
+
+    .main-nav a {
+        padding: 10px 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    main {
+        padding: 20px 12px;
+    }
+
+    section {
+        padding: 18px 14px;
+    }
+
+    .tile-grid,
+    .card-grid,
+    .alert-list {
+        grid-template-columns: 1fr;
+    }
+
+    .patient-layout {
+        flex-direction: column;
+    }
+
+    .tile-value {
+        font-size: 1.7rem;
+    }
+
+    /* let the wide log table scroll instead of breaking the layout */
+    .log-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
