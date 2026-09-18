@@ -1,689 +1,195 @@
-/* ---------- Colour palette and shared values ---------- */
-:root {
-    --bg: #12101c;
-    --bg-deep: #0c0a14;
-    --surface: #1b1730;
-    --surface-2: #231d3d;
-    --line: #362e5c;
-    --text: #ece9f8;
-    --muted: #a49cc9;
-    --violet: #9d7bff;
-    --violet-soft: #c0abff;
-    --lime: #c9f751;
-    --mint: #4fe0a4;
-    --amber: #ffc14d;
-    --coral: #ff6b81;
-}
-
-/* ---------- Base ---------- */
-* {
-    box-sizing: border-box;
-}
-
+/* General styles */
 body {
-    /* shorthand: font, margin, padding */
-    font: 16px/1.65 "Space Grotesk", "Trebuchet MS", sans-serif;
+    font: 16px Arial, sans-serif;
     margin: 0;
     padding: 0;
-    color: var(--text);
-    background-color: var(--bg);
-    background-image: radial-gradient(circle at 15% -10%, #2b2150 0%, var(--bg) 55%);
-    background-attachment: fixed;
+    color: #000000;
+    background-color: #f0f0f0;
 }
 
-h1,
-h2,
-h3 {
-    font-family: "Syne", "Space Grotesk", sans-serif;
-    font-weight: 800;
-    margin: 0 0 12px;
-    line-height: 1.2;
-    letter-spacing: -0.4px;
+h1, h2, h3 {
+    margin: 0 0 10px;
 }
 
-h2 {
-    font-size: 1.7rem;
-    padding-bottom: 10px;
-    border-bottom: 2px solid var(--line);
-    text-transform: uppercase;
-}
-
-/* the small lime bar that marks every section heading */
-h2::before {
-    content: "";
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin-right: 10px;
-    background-color: var(--lime);
-    transform: rotate(45deg);
-}
-
-a {
-    color: var(--violet-soft);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-a:hover,
-a:focus {
-    color: var(--lime);
-    text-decoration: underline;
-}
-
-/* ---------- Header and navigation (Flexbox) ---------- */
-.site-header {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 20px 32px;
-    background: linear-gradient(120deg, #2a1f55 0%, #3b2170 45%, #1d1838 100%);
-    border-bottom: 2px solid var(--violet);
-    box-shadow: 0 6px 26px rgba(0, 0, 0, 0.55);
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-}
-
-.brand img {
-    padding: 6px;
-    background-color: rgba(201, 247, 81, 0.12);
-    border: 1px solid var(--lime);
-    border-radius: 12px;
-}
-
-.brand-text h1 {
-    margin: 0;
-    font-size: 1.55rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+/* Header and navigation */
+header {
+    padding: 15px;
+    background-color: #336699;
     color: #ffffff;
 }
 
-.tagline {
-    margin: 3px 0 0;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.6px;
-    text-transform: uppercase;
-    color: var(--lime);
-}
-
-.main-nav ul {
+header nav ul {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-.main-nav a {
+header nav li {
+    margin-right: 10px;
+}
+
+/* descendant selector for the links inside the navigation */
+header nav a {
     display: block;
-    padding: 9px 15px;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.8rem;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    color: var(--violet-soft);
-    border: 1px solid transparent;
-    border-radius: 3px;
-    transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+    padding: 5px 10px;
+    color: #ffffff;
+    background-color: #224466;
+    border: 1px solid #ffffff;
+    transition: background-color 0.3s;
 }
 
-/* hover effect 1 — navigation links light up and gain an outline */
-.main-nav a:hover,
-.main-nav a:focus {
-    color: var(--lime);
-    background-color: rgba(12, 10, 20, 0.45);
-    border-color: var(--lime);
-    text-decoration: none;
+/* hover effect 1 */
+header nav a:hover {
+    background-color: #ffffff;
+    color: #336699;
 }
 
-/* ---------- Sections ---------- */
 main {
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 36px 20px;
+    padding: 15px;
 }
 
 section {
-    margin: 0 0 36px;
-    padding: 26px;
-    background-color: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    margin: 0 0 20px;
+    padding: 15px;
+    background-color: #ffffff;
+    border: 1px solid #999999;
 }
 
-.section-note {
-    margin: 0 0 22px;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.8rem;
-    color: var(--muted);
+/* ID selector for the introduction */
+#intro {
+    background-color: #e8e8e8;
 }
 
-#about {
-    border-left: 5px solid var(--lime);
-}
-
-.feature-list {
-    margin: 18px 0 0;
-    padding: 0 0 0 20px;
-}
-
-.feature-list li {
-    margin-bottom: 8px;
-}
-
-.feature-title {
-    font-family: "Syne", sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--lime);
-}
-
-/* ---------- Dashboard tiles (CSS Grid) ---------- */
-.tile-grid {
+/* Grid for the dashboard and for the sensor cards */
+.grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
 }
 
-.tile {
-    padding: 18px;
-    background-color: var(--surface-2);
-    border: 1px solid var(--line);
-    border-top: 3px solid var(--violet);
-    border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+.box {
+    padding: 10px;
+    background-color: #dddddd;
+    border: 1px solid #999999;
 }
 
-/* hover effect 2 — dashboard tiles lift and glow */
-.tile:hover {
-    transform: translateY(-5px);
-    border-top-color: var(--lime);
-    box-shadow: 0 12px 26px rgba(157, 123, 255, 0.28);
-}
-
-.tile h3 {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--muted);
-}
-
-.tile-value {
-    margin: 6px 0;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--lime);
-}
-
-.tile-range {
-    margin: 0;
-    font-size: 0.8rem;
-    color: var(--muted);
-}
-
-.unit {
-    font-size: 0.85rem;
-    font-weight: 400;
-    color: var(--violet-soft);
-}
-
-/* ---------- Sensor cards (CSS Grid + Flexbox inside) ---------- */
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
-    gap: 20px;
-}
-
+/* Sensor cards */
 .card {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 22px;
-    background-color: var(--surface-2);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 2px solid #336699;
+    box-shadow: 3px 3px 5px #aaaaaa;
+    transition: background-color 0.3s;
 }
 
-/* hover effect 3 — sensor cards lift and pick up a violet edge */
+/* hover effect 2 */
 .card:hover {
-    transform: translateY(-7px);
-    border-color: var(--violet);
-    box-shadow: 0 16px 34px rgba(157, 123, 255, 0.3);
+    background-color: #eef3f8;
 }
 
-.card-icon {
-    margin-bottom: 12px;
-    padding: 8px;
-    background-color: rgba(157, 123, 255, 0.12);
-    border-radius: 12px;
+.card p {
+    margin: 5px 0;
 }
 
-.card h3 {
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-}
-
-.card-model {
-    margin: 0 0 12px;
-    font-size: 0.78rem;
-    color: var(--muted);
-}
-
-.card-value {
-    margin: 0 0 12px;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 1.85rem;
-    font-weight: 700;
-    color: var(--text);
-}
-
-.card-time {
-    margin: 12px 0 16px;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.72rem;
-    color: var(--muted);
-}
-
-/* ---------- Status labels ---------- */
+/* Status of a sensor */
 .status {
-    display: inline-block;
-    margin: 0;
-    padding: 5px 13px;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    border-radius: 3px;
+    padding: 3px 8px;
+    border: 1px solid #000000;
 }
 
-.status-normal {
-    color: var(--mint);
-    background-color: rgba(79, 224, 164, 0.12);
-    border: 1px solid var(--mint);
+.normal {
+    background-color: #ccffcc;
 }
 
-.status-warning {
-    color: var(--amber);
-    background-color: rgba(255, 193, 77, 0.12);
-    border: 1px solid var(--amber);
+.warning {
+    background-color: #ffffcc;
 }
 
-.status-critical {
-    color: var(--coral);
-    background-color: rgba(255, 107, 129, 0.14);
-    border: 1px solid var(--coral);
+.critical {
+    background-color: #ffcccc;
 }
 
-/* ---------- Buttons ---------- */
-.btn {
-    margin-top: auto;
-    padding: 10px 20px;
-    font: inherit;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.6px;
-    text-transform: uppercase;
-    color: var(--violet-soft);
-    background-color: transparent;
-    border: 1px solid var(--violet);
-    border-radius: 3px;
-    cursor: pointer;
-    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
-}
-
-/* hover effect 4 — buttons fill with lime */
-.btn:hover,
-.btn:focus {
-    color: var(--bg-deep);
-    background-color: var(--lime);
-    border-color: var(--lime);
-}
-
-.btn:active {
-    background-color: var(--mint);
-    border-color: var(--mint);
-}
-
-.btn-primary {
-    color: var(--bg-deep);
-    background-color: var(--violet);
-    border-color: var(--violet);
-}
-
-.btn-primary:hover,
-.btn-primary:focus {
-    color: var(--bg-deep);
-    background-color: var(--lime);
-    border-color: var(--lime);
-}
-
-/* ---------- Patient information (Flexbox, two columns) ---------- */
-.patient-layout {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-}
-
-.patient-card,
-.patient-form {
-    flex: 1 1 320px;
-    padding: 22px;
-    border: 1px solid var(--line);
-    border-radius: 14px;
-}
-
-.patient-card {
-    background-color: var(--surface-2);
-    border-left: 4px solid var(--mint);
-}
-
-.patient-id {
-    margin: 0 0 16px;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.8rem;
-    color: var(--violet-soft);
-}
-
-/* ---------- Tables ---------- */
+/* Table with the patient information */
 table {
     width: 100%;
+    margin-bottom: 20px;
     border-collapse: collapse;
-    margin-top: 10px;
 }
 
-caption {
-    margin-bottom: 10px;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.75rem;
+th, td {
+    padding: 8px;
     text-align: left;
-    color: var(--muted);
+    border: 1px solid #999999;
 }
 
-th,
-td {
-    padding: 11px 12px;
-    text-align: left;
-    border-bottom: 1px solid var(--line);
+/* pseudo-class for the table rows */
+tr:nth-child(even) {
+    background-color: #f0f0f0;
 }
 
-.patient-table th {
-    width: 45%;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.78rem;
-    font-weight: 400;
-    text-transform: uppercase;
-    color: var(--muted);
-}
-
-.log-table thead th {
-    font-family: "Syne", sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    color: var(--bg-deep);
-    background-color: var(--violet);
-    border-bottom: none;
-}
-
-.log-table tbody td {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.85rem;
-}
-
-/* pseudo-class — zebra striping on the log table */
-.log-table tbody tr:nth-child(even) {
-    background-color: rgba(12, 10, 20, 0.4);
-}
-
-/* pseudo-class — highlight the row under the cursor */
-.log-table tbody tr:hover {
-    background-color: rgba(157, 123, 255, 0.16);
-}
-
-.log-table tbody tr:last-child td {
-    border-bottom: none;
-}
-
-/* ---------- Form ---------- */
-.patient-form {
-    background-color: var(--surface-2);
-    border-left: 4px solid var(--violet);
-}
-
-.form-note {
-    margin: 0 0 18px;
-    font-size: 0.85rem;
-    color: var(--muted);
-}
-
-.patient-form label {
+/* Form */
+label {
     display: block;
-    margin-bottom: 5px;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    color: var(--violet-soft);
+    margin-bottom: 3px;
 }
 
-.patient-form input,
-.patient-form select,
-.patient-form textarea {
-    width: 100%;
-    margin-bottom: 16px;
-    padding: 10px 12px;
-    font: inherit;
-    font-size: 0.9rem;
-    color: var(--text);
-    background-color: var(--bg-deep);
-    border: 1px solid var(--line);
-    border-radius: 3px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+input, select {
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #999999;
 }
 
-.patient-form input:focus,
-.patient-form select:focus,
-.patient-form textarea:focus {
-    outline: none;
-    border-color: var(--violet);
-    box-shadow: 0 0 0 3px rgba(157, 123, 255, 0.28);
+/* pseudo-class for the selected field */
+input:focus {
+    background-color: #ffffcc;
 }
 
-.patient-form textarea {
-    resize: vertical;
+button {
+    display: block;
+    padding: 8px 15px;
+    color: #ffffff;
+    background-color: #336699;
+    border: 1px solid #224466;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.alert-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
-    gap: 16px;
-    margin-bottom: 34px;
+/* hover effect 3 */
+button:hover {
+    background-color: #224466;
 }
 
+/* Alerts */
 .alert {
-    padding: 18px;
-    background-color: var(--surface-2);
-    border: 1px solid var(--line);
-    border-left: 5px solid var(--muted);
-    border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #000000;
 }
 
-/* hover effect 5 — alert panels nudge sideways */
-.alert:hover {
-    transform: translateX(5px);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+/* Footer */
+footer {
+    padding: 15px;
+    color: #ffffff;
+    background-color: #336699;
 }
 
-.alert h3 {
-    font-size: 1rem;
-    text-transform: uppercase;
+footer a {
+    color: #ffffff;
 }
 
-.alert p {
-    margin: 0;
-    font-size: 0.88rem;
-    color: var(--muted);
-}
-
-.alert-normal {
-    border-left-color: var(--mint);
-}
-
-.alert-normal h3 {
-    color: var(--mint);
-}
-
-.alert-warning {
-    border-left-color: var(--amber);
-}
-
-.alert-warning h3 {
-    color: var(--amber);
-}
-
-.alert-critical {
-    border-left-color: var(--coral);
-}
-
-.alert-critical h3 {
-    color: var(--coral);
-}
-
-.log-heading {
-    margin-top: 10px;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-}
-
-/* ---------- Footer (CSS Grid) ---------- */
-.site-footer {
-    padding: 38px 20px 18px;
-    color: var(--muted);
-    background-color: var(--bg-deep);
-    border-top: 2px solid var(--violet);
-}
-
-.footer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
-    gap: 28px;
-    max-width: 1120px;
-    margin: 0 auto;
-}
-
-.footer-column h3 {
-    font-size: 1rem;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    color: var(--lime);
-}
-
-.footer-column p {
-    margin: 0 0 10px;
-    font-size: 0.86rem;
-}
-
-.contact-list {
-    margin: 0;
-    padding: 0;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.82rem;
-    list-style: none;
-}
-
-.contact-list li {
-    margin-bottom: 7px;
-}
-
-/* descendant selector — links inside the footer */
-.site-footer a {
-    color: var(--violet-soft);
-}
-
-.site-footer a:hover {
-    color: var(--lime);
-}
-
-.copyright {
-    max-width: 1120px;
-    margin: 26px auto 0;
-    padding-top: 16px;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.74rem;
-    text-align: center;
-    color: #9a92c2;
-    border-top: 1px solid var(--line);
-}
-
-/* Flexbox on mobile devices - restricted width */
-@media screen and (max-width: 768px) {
-    .site-header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 16px 18px;
-    }
-
-    /* the header is a column here, so the nav has to claim the full width itself */
-    .main-nav {
-        width: 100%;
-    }
-
-    .main-nav ul {
-        flex-direction: column;
-        width: 100%;
-        gap: 4px;
-    }
-
-    .main-nav a {
-        padding: 11px 12px;
-        border-color: var(--line);
-    }
-
-    main {
-        padding: 22px 12px;
-    }
-
-    section {
-        padding: 18px 15px;
-    }
-
-    .tile-grid,
-    .card-grid,
-    .alert-list {
+/* Mobile devices */
+@media screen and (max-width: 600px) {
+    .grid {
         grid-template-columns: 1fr;
     }
 
-    .patient-layout {
-        flex-direction: column;
-    }
-
-    .tile-value {
-        font-size: 1.7rem;
-    }
-
-    /* let the wide log table scroll instead of breaking the layout */
-    .log-table {
+    header nav ul {
         display: block;
-        overflow-x: auto;
-        white-space: nowrap;
+    }
+
+    header nav li {
+        margin: 0 0 5px;
     }
 }
