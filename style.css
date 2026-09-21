@@ -37,7 +37,7 @@ header nav a {
     color: #ffffff;
     background-color: #0d3b69;
     border: 1px solid #ffffff;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s
 }
 
 /* hover effect 1 - the navigation link swaps its colours */
