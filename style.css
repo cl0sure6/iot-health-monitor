@@ -14,7 +14,7 @@ h1, h2, h3 {
 /* Header and navigation */
 header {
     padding: 20px 80px;
-    background-color: #336699;
+    background-color: #193a5c;
     color: #ffffff;
 }
 
@@ -35,7 +35,7 @@ header nav a {
     display: block;
     padding: 5px 10px;
     color: #ffffff;
-    background-color: #224466;
+    background-color: #0d3b69;
     border: 1px solid #ffffff;
     transition: background-color 0.3s;
 }
